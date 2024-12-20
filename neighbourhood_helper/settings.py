@@ -11,6 +11,7 @@ https://docs.djangoproject.com/en/5.1/ref/settings/
 """
 
 from pathlib import Path
+from decouple import config
 import os
 
 # Build paths inside the project like this: BASE_DIR / 'subdir'.
@@ -26,7 +27,13 @@ SECRET_KEY = 'django-insecure-_9rbg*#diprvpebd!9c)9e3h85xkc5j=c_fskr(1u+wm9mv3t=
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+
+ALLOWED_HOSTS = [
+    'neighbourhood-helper-app.onrender.com',
+    'localhost',
+    '127.0.0.1',
+    config('RENDER_EXTERNAL_HOSTNAME', default=''),
+]
 
 
 # Application definition
