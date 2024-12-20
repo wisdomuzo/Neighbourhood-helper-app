@@ -1,0 +1,254 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Neighborhood Helper App</title>
+  <script src="https://cdn.tailwindcss.com"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.js" defer></script>
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/Swiper/9.0.0/swiper-bundle.min.css">
+</head>
+<body class="bg-gray-100">
+  <!-- Hero Section -->
+  <header class="relative bg-cover bg-center h-screen text-white" style="background-image: url('https://source.unsplash.com/1600x900/?community,help');">
+    <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+    <div class="container mx-auto flex flex-col items-center justify-center h-full relative z-10 text-center animate-fade-in">
+      <h1 class="text-4xl md:text-6xl font-bold mb-4">Empowering Neighborhoods, One Task at a Time!</h1>
+      <p class="text-lg md:text-xl mb-6">Connect with your neighbors, post requests, and lend a helping hand. Build a stronger, more connected community.</p>
+      <div class="flex gap-4">
+        <a href="/register" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg text-lg transition-transform transform hover:scale-105">Register Now</a>
+        <a href="/login" class="bg-transparent border-2 border-white py-3 px-6 rounded-lg text-lg hover:bg-white hover:text-black transition-transform transform hover:scale-105">Login</a>
+      </div>
+    </div>
+  </header>
+
+  <!-- Carousel Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Success Stories</h2>
+      <div class="swiper-container">
+        <div class="swiper-wrapper">
+          <div class="swiper-slide bg-gray-100 p-6 rounded-lg shadow-md">
+            <p class="text-gray-700">"Thanks to Neighborhood Helper, I found a babysitter in less than an hour!"</p>
+            <h4 class="font-bold mt-4">- Emily, New York</h4>
+          </div>
+          <div class="swiper-slide bg-gray-100 p-6 rounded-lg shadow-md">
+            <p class="text-gray-700">"Moving heavy furniture was a breeze with help from my neighbor."</p>
+            <h4 class="font-bold mt-4">- John, Los Angeles</h4>
+          </div>
+          <div class="swiper-slide bg-gray-100 p-6 rounded-lg shadow-md">
+            <p class="text-gray-700">"This app helped me find tutoring for my son right in our neighborhood."</p>
+            <h4 class="font-bold mt-4">- Sarah, Chicago</h4>
+          </div>
+        </div>
+        <div class="swiper-pagination"></div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Key Features Section -->
+  <section class="py-12 bg-gray-50">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Why Choose Neighborhood Helper App?</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="text-center">
+          <img src="/icons/authentication.svg" alt="Authentication" class="mx-auto h-16 mb-4 animate-slide-in">
+          <h3 class="font-semibold text-lg">User-Friendly Authentication</h3>
+          <p class="text-gray-600">Easy sign-up and location-based profiles.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/task.svg" alt="Task Management" class="mx-auto h-16 mb-4 animate-slide-in">
+          <h3 class="font-semibold text-lg">Task Posting & Management</h3>
+          <p class="text-gray-600">Post tasks and track progress effortlessly.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/volunteer.svg" alt="Volunteer System" class="mx-auto h-16 mb-4 animate-slide-in">
+          <h3 class="font-semibold text-lg">Volunteer/Offer System</h3>
+          <p class="text-gray-600">Find help or offer services within your neighborhood.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/messaging.svg" alt="Messaging" class="mx-auto h-16 mb-4 animate-slide-in">
+          <h3 class="font-semibold text-lg">Real-Time Messaging</h3>
+          <p class="text-gray-600">Communicate securely and instantly with helpers.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/review.svg" alt="Review System" class="mx-auto h-16 mb-4 animate-slide-in">
+          <h3 class="font-semibold text-lg">Review System</h3>
+          <p class="text-gray-600">Leave and view feedback to build trust.</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- Task Feed Preview Section -->
+  <section class="py-12 bg-gray-100">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">Explore Tasks in Your Neighborhood</h2>
+      <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+        <div class="bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-lg">Need a babysitter this Friday</h3>
+          <p class="text-gray-600 text-sm">Category: Babysitting</p>
+          <p class="text-gray-600 text-sm">Deadline: Dec 15</p>
+        </div>
+        <div class="bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-lg">Help me move furniture tomorrow</h3>
+          <p class="text-gray-600 text-sm">Category: Handyman</p>
+          <p class="text-gray-600 text-sm">Deadline: Dec 14</p>
+        </div>
+        <div class="bg-white shadow-md p-4 rounded-lg hover:shadow-lg transition-shadow">
+          <h3 class="font-bold text-lg">Looking for tutoring in Math</h3>
+          <p class="text-gray-600 text-sm">Category: Tutoring</p>
+          <p class="text-gray-600 text-sm">Deadline: Dec 20</p>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- How It Works Section -->
+  <section class="py-12 bg-white">
+    <div class="container mx-auto px-6">
+      <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+      <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+        <div class="text-center">
+          <img src="/icons/signup.svg" alt="Sign Up" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold text-lg">Sign Up</h3>
+          <p class="text-gray-600">Create your profile and specify your neighborhood.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/post-task.svg" alt="Post Task" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold text-lg">Post or Explore Tasks</h3>
+          <p class="text-gray-600">Share your needs or find tasks to help with.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/connect.svg" alt="Connect" class="mx-auto h-16 mb-4">
+          <h3 class="font-semibold text-lg">Connect & Complete</h3>
+          <p class="text-gray-600">Chat, offer help, and get things done together.</p>
+        </div>
+        <div class="text-center">
+          <img src="/icons/review.svg" alt="Review" class="mx-auto h-16 mb-4">
+         
+
+
+
+
+
+
+          <!DOCTYPE html>
+          <html lang="en">
+          <head>
+            <meta charset="UTF-8">
+            <meta name="viewport" content="width=device-width, initial-scale=1.0">
+            <title>Neighborhood Helper App</title>
+            <script src="https://cdn.tailwindcss.com"></script>
+            
+          </head>
+          <body class="bg-gray-100">
+            <!-- Hero Section -->
+            <header class="relative bg-cover bg-center h-screen text-white" style="background-image: url('https://example.com/community-background.jpg');">
+              <div class="absolute inset-0 bg-black bg-opacity-50"></div>
+              <div class="container mx-auto flex flex-col items-center justify-center h-full relative z-10 text-center">
+                <h1 class="text-4xl md:text-6xl font-bold mb-4">Empowering Neighborhoods, One Task at a Time!</h1>
+                <p class="text-lg md:text-xl mb-6">Connect with your neighbors, post requests, and lend a helping hand. Build a stronger, more connected community.</p>
+                <div class="flex gap-4">
+                  <a href="/register" class="bg-green-500 hover:bg-green-600 text-white py-3 px-6 rounded-lg text-lg">Register Now</a>
+                  <a href="/login" class="bg-transparent border-2 border-white py-3 px-6 rounded-lg text-lg hover:bg-white hover:text-black">Login</a>
+                </div>
+              </div>
+            </header>
+          
+            <!-- Key Features Section -->
+            <section class="py-12 bg-white">
+              <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">Why Choose Neighborhood Helper App?</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div class="text-center">
+                    <img src="/icons/authentication.svg" alt="Authentication" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">User-Friendly Authentication</h3>
+                    <p class="text-gray-600">Easy sign-up and location-based profiles.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/task.svg" alt="Task Management" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Task Posting & Management</h3>
+                    <p class="text-gray-600">Post tasks and track progress effortlessly.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/volunteer.svg" alt="Volunteer System" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Volunteer/Offer System</h3>
+                    <p class="text-gray-600">Find help or offer services within your neighborhood.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/messaging.svg" alt="Messaging" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Real-Time Messaging</h3>
+                    <p class="text-gray-600">Communicate securely and instantly with helpers.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/review.svg" alt="Review System" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Review System</h3>
+                    <p class="text-gray-600">Leave and view feedback to build trust.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+            <!-- Task Feed Preview Section -->
+            <section class="py-12 bg-gray-100">
+              <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">Explore Tasks in Your Neighborhood</h2>
+                <div class="grid grid-cols-1 md:grid-cols-3 gap-8">
+                  <div class="bg-white shadow-md p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Need a babysitter this Friday</h3>
+                    <p class="text-gray-600 text-sm">Category: Babysitting</p>
+                    <p class="text-gray-600 text-sm">Deadline: Dec 15</p>
+                  </div>
+                  <div class="bg-white shadow-md p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Help me move furniture tomorrow</h3>
+                    <p class="text-gray-600 text-sm">Category: Handyman</p>
+                    <p class="text-gray-600 text-sm">Deadline: Dec 14</p>
+                  </div>
+                  <div class="bg-white shadow-md p-4 rounded-lg">
+                    <h3 class="font-bold text-lg">Looking for tutoring in Math</h3>
+                    <p class="text-gray-600 text-sm">Category: Tutoring</p>
+                    <p class="text-gray-600 text-sm">Deadline: Dec 20</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+            <!-- How It Works Section -->
+            <section class="py-12 bg-white">
+              <div class="container mx-auto px-6">
+                <h2 class="text-3xl font-bold text-center mb-8">How It Works</h2>
+                <div class="grid grid-cols-1 md:grid-cols-4 gap-8">
+                  <div class="text-center">
+                    <img src="/icons/signup.svg" alt="Sign Up" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Sign Up</h3>
+                    <p class="text-gray-600">Create your profile and specify your neighborhood.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/post-task.svg" alt="Post Task" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Post or Explore Tasks</h3>
+                    <p class="text-gray-600">Share your needs or find tasks to help with.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/connect.svg" alt="Connect" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Connect & Complete</h3>
+                    <p class="text-gray-600">Chat, offer help, and get things done together.</p>
+                  </div>
+                  <div class="text-center">
+                    <img src="/icons/review.svg" alt="Review" class="mx-auto h-16 mb-4">
+                    <h3 class="font-semibold text-lg">Review & Build Trust</h3>
+                    <p class="text-gray-600">Leave feedback and grow your neighborhood reputation.</p>
+                  </div>
+                </div>
+              </div>
+            </section>
+          
+            <!-- Footer Section -->
+            <footer class="bg-gray-800 text-white py-8">
+              <div class="container mx-auto px-6 text-center">
+                <p>&copy; 2024 Neighborhood Helper App. All rights reserved.</p>
+                <p>Follow us on: <a href="#" class="underline">Facebook</a>, <a href="#" class="underline">Twitter</a>, <a href="#" class="underline">Instagram</a></p>
+              </div>
+            </footer>
+          </body>
+          </html>

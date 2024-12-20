@@ -1,0 +1,129 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+    <!-- Animate.css for animations -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/animate.css/4.1.1/animate.min.css">
+    <!-- Feather Icons -->
+    <script src="https://unpkg.com/feather-icons"></script>
+    <style>
+        .task-card {
+            transition: all 0.3s cubic-bezier(0.25, 0.8, 0.25, 1);
+        }
+
+        .task-card:hover {
+            transform: translateY(-10px);
+            box-shadow: 0 14px 28px rgba(0,0,0,0.1), 0 10px 10px rgba(0,0,0,0.08);
+        }
+
+        /* Floating Elements */
+        .floating-element {
+            animation: float 4s ease-in-out infinite;
+        }
+
+        @keyframes float {
+            0% { transform: translateY(0px); }
+            50% { transform: translateY(-20px); }
+            100% { transform: translateY(0px); }
+        }
+    </style>
+</head>
+<body>
+    <h1 class="text-4xl text-center font-bold text-gray-800 mt-5">Welcome to Your Dashboard</h1>
+{% if messages %}
+    <ul>
+        {% for message in messages %}
+            <li class="alert alert-{{ message.tags }}">{{ message }}</li>
+        {% endfor %}
+    </ul>
+{% endif %}
+<!-- Link for user rating  -->
+<a href="{% url 'rate_user' user.id %}" class="text-purple-600">Rate {{ user.username }}</a>
+<button class="bg-cyan-500 text-white px-4 py-2 rounded-full group-hover:bg-cyan-600 transition-colors"> <a href="{% url 'tasks:create_task' %}">Create Tasks</a> </button>
+<button class="bg-cyan-500 text-white px-4 py-2 rounded-full group-hover:bg-cyan-600 transition-colors"> <a href="{% url 'profile_edit' %}">Create Profile</a> </button>
+<section class="container mx-auto my-16 px-4">
+    <h2 class="text-4xl font-bold text-center mb-10">Community Tasks</h2>
+    
+    <!-- Filters with Cool Effects -->
+    <div class="flex justify-center space-x-4 mb-10">
+        <select class="px-4 py-2 rounded-full bg-white shadow-md">
+            <option>All Categories</option>
+            <option>Errands</option>
+            <option>Handyman</option>
+        </select>
+        <select class="px-4 py-2 rounded-full bg-white shadow-md">
+            <option>Urgency</option>
+            <option>High</option>
+            <option>Medium</option>
+        </select>
+        <input 
+            type="text" 
+            placeholder="Search Tasks" 
+            class="px-4 py-2 rounded-full bg-white shadow-md"
+        >
+    </div>
+
+    <!-- Task Cards Grid -->
+    <div class="grid md:grid-cols-3 gap-6">
+        <!-- Task Card with Advanced Hover -->
+        <div class="task-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all group">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-cyan-100 text-cyan-800 px-3 py-1 rounded-full text-sm">Errands</span>
+                <span class="text-yellow-500">
+                    <i data-feather="star" class="inline-block"></i>
+                    4.5
+                </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Grocery Shopping Help</h3>
+            <p class="text-gray-600 mb-4">Need assistance picking up groceries from local store</p>
+            <div class="flex justify-between items-center">
+                <span class="text-green-500">Voluntary</span>
+                <button class="bg-cyan-500 text-white px-4 py-2 rounded-full group-hover:bg-cyan-600 transition-colors">
+                    Volunteer
+                </button>
+            </div>
+        </div>
+
+        <!-- More Task Cards Similar to Above -->
+        <div class="task-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all group">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-purple-100 text-purple-800 px-3 py-1 rounded-full text-sm">Tutoring</span>
+                <span class="text-yellow-500">
+                    <i data-feather="star" class="inline-block"></i>
+                    4.8
+                </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Math Tutor Needed</h3>
+            <p class="text-gray-600 mb-4">Help with high school algebra and geometry</p>
+            <div class="flex justify-between items-center">
+                <span class="text-blue-500">$25/hour</span>
+                <button class="bg-cyan-500 text-white px-4 py-2 rounded-full group-hover:bg-cyan-600 transition-colors">
+                    Apply
+                </button>
+            </div>
+        </div>
+
+        <div class="task-card bg-white p-6 rounded-2xl shadow-lg hover:shadow-2xl transition-all group">
+            <div class="flex justify-between items-center mb-4">
+                <span class="bg-green-100 text-green-800 px-3 py-1 rounded-full text-sm">Handyman</span>
+                <span class="text-yellow-500">
+                    <i data-feather="star" class="inline-block"></i>
+                    4.2
+                </span>
+            </div>
+            <h3 class="text-xl font-semibold mb-3">Furniture Assembly</h3>
+            <p class="text-gray-600 mb-4">Need help assembling new furniture</p>
+            <div class="flex justify-between items-center">
+                <span class="text-blue-500">$50 Flat Rate</span>
+                <button class="bg-cyan-500 text-white px-4 py-2 rounded-full group-hover:bg-cyan-600 transition-colors">
+                    Help
+                </button>
+            </div>
+        </div>
+    </div>
+</section>
+</body>
+</html>

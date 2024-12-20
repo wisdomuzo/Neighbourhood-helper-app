@@ -1,0 +1,26 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>User Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body>
+    <h2 class="capitalize">{{ profile.user.username }}'s Profile</h2>
+    <img src="{{ profile.profile_picture.url }}" alt="Profile Picture" width="150">
+    <p><strong>Location:</strong> {{ profile.location }}</p>
+    <p><strong>Bio:</strong> {{ profile.bio }}</p>
+    <a href="{% url 'profile_edit' %}">Edit Profile</a>
+    
+</body>
+</html>
+
+
+<!-- {% block content %}
+<h2 class="capitalize">{{ profile.user.username }}'s Profile</h2>
+<img src="{{ profile.profile_picture.url }}" alt="Profile Picture" width="150">
+<p><strong>Location:</strong> {{ profile.location }}</p>
+<p><strong>Bio:</strong> {{ profile.bio }}</p>
+<a href="{% url 'profile_edit' %}">Edit Profile</a>
+{% endblock %} -->

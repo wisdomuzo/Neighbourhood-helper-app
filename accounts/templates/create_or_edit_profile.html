@@ -1,0 +1,209 @@
+<!-- {% block content %} 
+<h2>{{ user.username }}'s Profile</h2> 
+<form method="post" enctype="multipart/form-data">    
+     {% csrf_token %}     
+     {{ form.as_p }}     
+     <button type="submit">Save Profile</button> 
+    </form> 
+{% endblock %} -->
+
+{% load widget_tweaks %} 
+{% load static %}
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Create Profile</title>
+    <script src="https://cdn.tailwindcss.com"></script>
+</head>
+<body class="min-h-screen bg-gray-100 flex items-center justify-center p-4">
+    <div class="bg-white shadow-xl rounded-2xl w-full max-w-2xl p-8 space-y-6">
+        <div class="text-center">
+            <h2 class="text-3xl font-bold text-gray-800 mb-2">Create Profile</h2>
+            <p class="text-gray-500">Upload your personal information</p>
+            <h2 class="text-2xl font-bold text-blue-500 mt-2 capitalize">{{ user.username }}'s Profile</h2>
+        </div>
+        
+        <form class="space-y-6" method="post" action="{% url 'profile_edit' %}" enctype="multipart/form-data">
+            {% csrf_token %}
+            <!-- Profile Picture Upload -->
+            <div class="min-h-screen bg-gray-50 py-14">
+                <div class="max-w-xl mx-auto px-4">
+                    <!-- Card Container -->
+                    <div class="bg-white rounded-2xl shadow-lg p-8">
+                        <div class="text-center mb-8">
+                            <h2 class="text-2xl font-bold text-gray-800">Profile Photo</h2>
+                            <p class="text-gray-600 mt-2">Update your profile picture</p>
+                        </div>
+            
+                        <!-- Upload Container -->
+                        <div class="flex flex-col items-center">
+                            <div class="relative group">
+                                <!-- Image Preview Area -->
+                                <div class="w-48 h-48 rounded-full ring-4 ring-gray-100 shadow-lg mx-auto flex items-center justify-center mb-6 overflow-hidden group-hover:ring-blue-100 transition-all duration-300">
+                                    {% if user.profile_picture %}
+                                        <img src="{{ user.profile_picture.url }}" 
+                                             alt="Current profile picture" 
+                                             class="w-full h-full object-cover">
+                                    {% else %}
+                                        <div class="w-full h-full flex flex-col items-center justify-center bg-gradient-to-b from-gray-50 to-gray-100">
+                                            <svg xmlns="http://www.w3.org/2000/svg" 
+                                                 class="w-20 h-20 text-gray-300 mb-4" 
+                                                 viewBox="0 0 24 24" 
+                                                 fill="none" 
+                                                 stroke="currentColor">
+                                                <path stroke-linecap="round" 
+                                                      stroke-linejoin="round" 
+                                                      stroke-width="1.5" 
+                                                      d="M16 7a4 4 0 11-8 0 4 4 0 018 0zM12 14a7 7 0 00-7 7h14a7 7 0 00-7-7z" />
+                                            </svg>
+                                            <p class="text-sm font-medium text-gray-500">No photo selected</p>
+                                        </div>
+                                    {% endif %}
+            
+                                    <!-- Hover Overlay -->
+                                    <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                        <p class="text-white text-sm font-medium">Change Photo</p>
+                                    </div>
+                                </div>
+            
+                                <!-- Upload Button -->
+                                <label for="{{ form.profile_picture.id_for_label }}" 
+                                       class="justify-center right-2 cursor-pointer">
+                                    <div class="bg-blue-500 hover:bg-blue-600 text-white rounded-full p-3 shadow-xl transform transition-all duration-300 hover:scale-110 active:scale-95 hover:rotate-12">
+                                        <svg xmlns="http://www.w3.org/2000/svg" 
+                                             class="w-5 h-5" 
+                                             fill="none" 
+                                             viewBox="0 0 24 24" 
+                                             stroke="currentColor">
+                                            <path stroke-linecap="round" 
+                                                  stroke-linejoin="round" 
+                                                  stroke-width="2" 
+                                                  d="M12 4v16m8-8H4" />
+                                        </svg>
+                                    </div>
+                                    {{ form.profile_picture|add_class:"hidden" }}
+                                </label>
+                            </div>
+            
+                            <!-- Error Messages -->
+                            {% if form.profile_picture.errors %}
+                                <div class="mt-4 p-4 bg-red-50 rounded-lg">
+                                    {% for error in form.profile_picture.errors %}
+                                        <p class="text-sm text-red-600">{{ error }}</p>
+                                    {% endfor %}
+                                </div>
+                            {% endif %}
+                        </div>
+                    </div>
+                </div>
+            </div>
+            
+            <script>
+            document.getElementById('{{ form.profile_picture.id_for_label }}').addEventListener('change', function(e) {
+                if (this.files && this.files[0]) {
+                    const reader = new FileReader();
+                    reader.onload = function(e) {
+                        const previewContainer = document.querySelector('.w-48.h-48');
+                        previewContainer.innerHTML = `
+                            <img src="${e.target.result}" 
+                                 alt="Profile preview" 
+                                 class="flex justify-center w-full h-full object-cover">
+                            <div class="absolute inset-0 bg-black bg-opacity-40 flex items-center justify-center opacity-0 group-hover:opacity-100 transition-opacity duration-300">
+                                <p class="text-white text-sm font-medium">Change Photo</p>
+                            </div>
+                        `;
+                    }
+                    reader.readAsDataURL(this.files[0]);
+                }
+            });
+            </script>
+            <!-- <div class="flex flex-col items-center space-y-4">
+                <div class="relative">
+                    <div class="w-32 h-32 rounded-full bg-gray-200 flex items-center justify-center overflow-hidden">
+                        <i data-lucide="camera" class="w-16 h-16 text-gray-400"></i>
+                    </div>
+                    <label for="profile_picture" 
+                        class="absolute bottom-0 right-0 bg-blue-500 text-white rounded-full p-2 cursor-pointer hover:bg-blue-600 transition">
+                    </label>
+                    
+                    
+                        <i data-lucide="upload" class="w-5 h-5"></i>
+                        {{ form.profile_picture }}
+                   
+                </div>
+            </div> -->
+
+            <!-- Location Input -->
+            <div class="space-y-2">
+                <label for="location" class="block text-gray-700 font-medium">
+                    Location
+                </label>
+                <div class="relative">
+                    <i data-lucide="map-pin" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input 
+                        type="text" 
+                        id="location"
+                        name="location"
+                        placeholder="Where are you located?"
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        required
+                    />
+                </div>
+            </div>
+
+            <!-- Phone Number Input -->
+            <div class="space-y-2">
+                <label for="phone_no" class="block text-gray-700 font-medium">
+                    Phone Number
+                </label>
+                <div class="relative">
+                    <i data-lucide="phone" class="absolute left-3 top-1/2 -translate-y-1/2 text-gray-400"></i>
+                    <input 
+                        type="tel" 
+                        id="phone_no"
+                        name="phone_no"
+                        placeholder="+1 (123) 456-7890"
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent"
+                        required
+                    />
+                </div>
+            </div>
+
+            <!-- Bio Textarea -->
+            <div class="space-y-2">
+                <label for="bio" class="block text-gray-700 font-medium">
+                    Bio
+                </label>
+                <div class="relative">
+                    <i data-lucide="pencil" class="absolute left-3 top-4 text-gray-400"></i>
+                    <textarea 
+                        id="bio"
+                        name="bio"
+                        placeholder="Write about yourself..."
+                        rows="4"
+                        class="w-full pl-10 pr-4 py-3 border border-gray-300 rounded-lg focus:ring-2 focus:ring-blue-500 focus:border-transparent resize-none"
+                    ></textarea>
+                </div>
+            </div>
+
+            <!-- Submit Button -->
+            <div class="pt-4">
+                <button 
+                    type="submit" 
+                    class="w-full bg-blue-600 text-white py-3 rounded-lg hover:bg-blue-700 transition duration-300 ease-in-out transform hover:scale-[1.02] focus:outline-none focus:ring-2 focus:ring-blue-500 focus:ring-opacity-50"
+                >
+                    Save Profile
+                </button>
+            </div>
+        </form>
+    </div>
+
+    <!-- Lucide Icons Script -->
+    <script src="https://unpkg.com/lucide@latest"></script>
+    <script>
+        lucide.createIcons(); // Render the Lucide icons
+    </script>
+</body>
+</html>
