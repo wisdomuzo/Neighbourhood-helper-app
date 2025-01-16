@@ -85,4 +85,4 @@ def delete_task(request, task_id):
 
     task.delete()
     messages.success(request, 'Task successfully deleted.')
-    return redirect('task_list')  # Redirect back to task list after deletion
+    return redirect('tasks:task_list')  # Redirect back to task list after deletion
